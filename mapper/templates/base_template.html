@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load leaflet_tags %}
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+{#    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>#}
+{#    <script src="{% static 'js/cards.js' %}"></script>#}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        {% leaflet_js %}
+        {% leaflet_css %}
+</head>
+<body>
+    <span style="float:right;">
+    <ul>
+        {% if user.is_authenticated and user.is_staff %}
+            <a href="{% url 'admin:index' %}">Admin</a> |
+            <a href="{% url 'profile' %}">{{ user.username }}</a>  |
+            <a href="{% url 'logout' %}">Logout</a> |
+            <a href="{% url 'password_reset' %}">Reset password</a>
+        {% elif user.is_authenticated and not user.is_staff %}
+            <a href="{% url 'profile' %}">{{ user.username }}</a> |
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'password_reset' %}">Reset password</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> |
+            <a href="{% url 'register' %}">Register</a>
+
+        {% endif %}
+    </ul>
+    </span>
+
+        <div class="leaflet-container">
+            {% leaflet_map "map" %}
+        </div>
+
+    {% block content %}{% endblock content %}
+    <br>
+    <br>
+    <footer>&copy; J & J 2014</footer>
+</body>
+</html>

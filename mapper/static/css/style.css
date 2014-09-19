@@ -1,0 +1,26 @@
+.leaflet-container { /* all maps */
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+ul {
+    background-color: olivedrab;
+    border-bottom: greenyellow;
+    list-style-type: none;
+    margin: 0px, 0px, 20px, 0px;
+    padding: 7px, 5px, 7px, 5px;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: cadetblue;
+}

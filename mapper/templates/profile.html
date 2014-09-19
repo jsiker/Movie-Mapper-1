@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block content %}
+    <p>Hi {{ user.username }}, the last time you logged in was {{ user.last_login }}.</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ location_form }}
+        <input type="submit" value="Submit address" />
+    </form>
+{% endblock content %}
